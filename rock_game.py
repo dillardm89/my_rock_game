@@ -1,12 +1,31 @@
-import re, sys, time, random
+import re
+import sys
+import time
+import random
 
-# Computer random selection
+"""Command line Python game - Rock, Paper, Scissors, Lizard, Spock
+"""
+
+
 def computer_choice():
+    """Function to select a random choice from array of string values
+
+    Returns:
+        str: String representation of number value (1, 2, 3, 4, 5)
+    """
+    
     options = ['1', '2', '3', '4', '5']
     computer = random.choice(options)
     return computer
 
+
 def option_graphic(choice):
+    """Function to return ASCII art image based on user/computer choice
+
+    Args:
+        choice (str): String representation of number value (1, 2, 3, 4, 5) selected by user/computer
+    """
+    
     if choice == '1':
         rock = "         _____    ____    _____  _  __\n\
         |  __ \  / __ \  / ____|| |/ /\n\
@@ -48,8 +67,19 @@ def option_graphic(choice):
         |_____/ |_|      \____/  \_____||_|\_\ "
         print(spock)
 
-# Determine game winner
+
 def game_winner(selection, computer):
+    """Function to determine game winner based on user and computer selected options
+
+    Args:
+        selection (str): String representation of number value (1, 2, 3, 4, 5) selected by user
+        computer (str): String representation of number value (1, 2, 3, 4, 5) randomly
+            selected for computer by computer_choice function
+
+    Returns:
+        str: String of 'user' or 'computer' winner based on array of winning choice combinations
+    """
+    
     if selection == computer:
         return 'draw'
     else:
@@ -61,19 +91,27 @@ def game_winner(selection, computer):
         else:
             return 'computer'
 
-#Return to Menu
+
 def return_to_menu():
+    """Function to return to main menu
+    """
+
     input('Press "Enter" key to return to the game menu.')
     game_menu()
 
-# Exit Game
+
 def exit_game():
+    """Function to exit program
+    """
     print('Exiting...')
-    time.sleep(2)
+    time.sleep(1)
     sys.exit()
 
-# Main Menu
+
 def game_menu():
+    """Main menu function to initiate game play and display winner
+    """
+    
     print("Let's Play a Game: \n1: Rock \n2: Paper \n3: Scissors \n4: Lizard \n5: Spock \n6: Exit")
     selection = input('Enter selection number: ')
 
@@ -109,6 +147,7 @@ def game_menu():
             print('\nMatch is a draw. Please try again.\n')
 
         return_to_menu()
+
 
 if __name__ == "__main__":
     game_menu()
